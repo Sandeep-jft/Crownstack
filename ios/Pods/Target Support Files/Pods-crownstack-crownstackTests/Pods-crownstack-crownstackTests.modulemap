@@ -1,0 +1,6 @@
+module Pods_crownstack_crownstackTests {
+  umbrella header "Pods-crownstack-crownstackTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

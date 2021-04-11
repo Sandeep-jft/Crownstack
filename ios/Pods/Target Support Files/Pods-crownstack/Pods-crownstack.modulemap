@@ -1,0 +1,6 @@
+module Pods_crownstack {
+  umbrella header "Pods-crownstack-umbrella.h"
+
+  export *
+  module * { export * }
+}
