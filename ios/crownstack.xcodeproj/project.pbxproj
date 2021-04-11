@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* crownstackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* crownstackTests.m */; };
 		0479D3572622BB3200B87F18 /* libReact-Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0479D3562622BB3200B87F18 /* libReact-Core.a */; };
-		04F248232622AC7C00F163B3 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F2481F2622AC3E00F163B3 /* libSplashScreen.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -26,20 +25,6 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = crownstack;
 		};
-		0479D3532622BB1600B87F18 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 04F2481A2622AC3E00F163B3 /* SplashScreen.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 3D7682751D8E76B80014119E;
-			remoteInfo = SplashScreen;
-		};
-		04F2481E2622AC3E00F163B3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 04F2481A2622AC3E00F163B3 /* SplashScreen.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D7682761D8E76B80014119E;
-			remoteInfo = SplashScreen;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +33,6 @@
 		00E356F21AD99517003FC87E /* crownstackTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = crownstackTests.m; sourceTree = "<group>"; };
 		02779ED984A96866F45DA85D /* libPods-crownstack-crownstackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-crownstack-crownstackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0479D3562622BB3200B87F18 /* libReact-Core.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libReact-Core.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		04F2481A2622AC3E00F163B3 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* crownstack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = crownstack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = crownstack/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = crownstack/AppDelegate.m; sourceTree = "<group>"; };
@@ -78,7 +62,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0479D3572622BB3200B87F18 /* libReact-Core.a in Frameworks */,
-				04F248232622AC7C00F163B3 /* libSplashScreen.a in Frameworks */,
 				906355C051F7A9FA189A114F /* libPods-crownstack.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,14 +84,6 @@
 				00E356F11AD99517003FC87E /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		04F2481B2622AC3E00F163B3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				04F2481F2622AC3E00F163B3 /* libSplashScreen.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		13B07FAE1A68108700A75B9A /* crownstack */ = {
@@ -149,7 +124,6 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				04F2481A2622AC3E00F163B3 /* SplashScreen.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -218,7 +192,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				0479D3542622BB1600B87F18 /* PBXTargetDependency */,
 			);
 			name = crownstack;
 			productName = crownstack;
@@ -253,12 +226,6 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 04F2481B2622AC3E00F163B3 /* Products */;
-					ProjectRef = 04F2481A2622AC3E00F163B3 /* SplashScreen.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* crownstack */,
@@ -266,16 +233,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		04F2481F2622AC3E00F163B3 /* libSplashScreen.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libSplashScreen.a;
-			remoteRef = 04F2481E2622AC3E00F163B3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
@@ -469,11 +426,6 @@
 			isa = PBXTargetDependency;
 			target = 13B07F861A680F5B00A75B9A /* crownstack */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
-		};
-		0479D3542622BB1600B87F18 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SplashScreen;
-			targetProxy = 0479D3532622BB1600B87F18 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
