@@ -1,29 +1,21 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, View, Text, Image, ActivityIndicator, ScrollView , StyleSheet, TouchableOpacity} from 'react-native'
-import SplashScreen from 'react-native-splash-screen'
-
-
+import { SafeAreaView, View, Text, Image, ActivityIndicator, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
+import { movieImageUrl } from './utils/constant'
 
 const App = () => {
 
-  const [totalMovies, setTotalMovies] = useState(null);
-  const movieUri = useState('https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8bW92aWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60')[0];
+  const [totalMovies, setTotalMovies] = useState([]);
+  const [paginationCount, setPaginationCount] = useState(0);
 
   useEffect(() => {
     SplashScreen.hide();
-    fetchUserData();
+    fetchMoviesList();
   }, [])
 
-  const fetchUserData = async () => {
-    const movieList = await fetch('https://parseapi.back4app.com/classes/Movie?limit=14',
+  const fetchMoviesList = async () => {
+    try{
+    const movieList = await fetch(`https://parseapi.back4app.com/classes/Movie?skip=${paginationCount}&limit=14`,
       {
         headers: {
           'X-Parse-Application-Id': 'xjK389lSZ70YgvRNe9fb1kd94z9IllRKqOrQIa6l', // This is the fake app's application id
@@ -32,33 +24,49 @@ const App = () => {
       });
     const movieListParse = await movieList.json();
     if (movieListParse) {
-      setTotalMovies(movieListParse.results);
+      console.log("The movie list is --->",movieListParse.results);
+      setTotalMovies(prev => [...prev, movieListParse.results]);
+      setPaginationCount(prev => prev + 14);
     }
-
   }
+
+  catch(err){
+    console.log("The error is --->",err);
+  }
+  }
+
+
+  const isListCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
+    const paddingToBottom = 30;
+    return layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom;
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       {
-        totalMovies === null ?
-          <ActivityIndicator size="large" style={{marginTop:150}} color={"rgb(51,207,119"} /> :
-          <ScrollView style={styles.container} >
+        totalMovies.length===0 ? <ActivityIndicator size="large" style={{ marginTop: 150 }} color="rgb(51,207,119" /> :
+          <ScrollView style={styles.container}
+            onScroll={({ nativeEvent }) => {
+              if (isListCloseToBottom(nativeEvent)) {
+                fetchMoviesList();
+              }
+            }} >
             <View style={styles.header} >
               <Text styles={styles.headerText} >Movies List</Text>
             </View>
             {
-              totalMovies.length > 0 && totalMovies.map(item => {
+              totalMovies.length>0 && totalMovies.map((item,index) => {
                 return (
-                  <TouchableOpacity key={item.objectId} style={styles.movieContainer} >
-                    <Image source={{uri : movieUri}}  style={styles.imageContainer} />
+                  <View key={index} style={styles.movieContainer} >
+                    <Image source={{ uri: movieImageUrl }} style={styles.imageContainer} />
                     <View style={styles.movieInfo} >
+                      {/* <Text>{JSON.stringify(item)}</Text> */}
                       <Text style={styles.detailStyle} >{item.title}</Text>
                       <Text style={styles.detailStyle} >Year : {item.year}</Text>
                     </View>
-                  </TouchableOpacity>
+                  </View>
                 )
               })
-
             }
           </ScrollView>
       }
@@ -81,34 +89,34 @@ const styles = StyleSheet.create({
     fontSize: 32,
     // lineHeight: 30,
     letterSpacing: 0.15,
-    color:"rgb(52,52,52)"
+    color: "rgb(52,52,52)"
     // textAlign:"center"
   },
-  movieContainer:{
-    height:66,
+  movieContainer: {
+    minHeight: 66,
     marginHorizontal: 14,
-    flexDirection:"row",
+    flexDirection: "row",
     // justifyContent: 'space-around',
-    alignItems:"center",
+    alignItems: "center",
     // backgroundColor:"blue",
-    borderWidth:1,
-    marginVertical:5,
-    borderRadius:4,
-    borderColor:"rgba(52,52,52,0.4)"
+    borderWidth: 1,
+    marginVertical: 5,
+    borderRadius: 4,
+    borderColor: "rgba(52,52,52,0.4)"
   },
-  imageContainer:{
-    height:44,
-    width:44,
+  imageContainer: {
+    height: 44,
+    width: 44,
     borderRadius: 22,
-    resizeMode:"cover",
-    marginHorizontal:5
+    resizeMode: "cover",
+    marginHorizontal: 5
   },
-  movieInfo:{
-    justifyContent:"center",
-    marginLeft:15
+  movieInfo: {
+    justifyContent: "center",
+    marginLeft: 15
 
   },
-  detailStyle:{
+  detailStyle: {
     fontWeight: '600',
     fontSize: 16,
     lineHeight: 20,
