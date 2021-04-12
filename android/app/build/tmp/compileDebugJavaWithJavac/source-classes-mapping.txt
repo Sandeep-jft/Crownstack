@@ -1,0 +1,14 @@
+com/crownstack/MainActivity.java
+ com.crownstack.MainActivity
+com/crownstack/ReactNativeFlipper.java
+ com.crownstack.ReactNativeFlipper
+ com.crownstack.ReactNativeFlipper$1
+ com.crownstack.ReactNativeFlipper$2
+ com.crownstack.ReactNativeFlipper$2$1
+com/crownstack/BuildConfig.java
+ com.crownstack.BuildConfig
+com/crownstack/MainApplication.java
+ com.crownstack.MainApplication
+ com.crownstack.MainApplication$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
