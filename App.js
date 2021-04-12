@@ -18,14 +18,14 @@ const App = () => {
     const movieList = await fetch(`https://parseapi.back4app.com/classes/Movie?skip=${paginationCount}&limit=14`,
       {
         headers: {
-          'X-Parse-Application-Id': 'xjK389lSZ70YgvRNe9fb1kd94z9IllRKqOrQIa6l', // This is the fake app's application id
-          'X-Parse-Master-Key': '7wHPVDC4MkHR7f6a3gUcYqu8rb8XfVt0GY0gkAs0', // This is the fake app's readonly master key
+          'X-Parse-Application-Id': 'xjK389lSZ70YgvRNe9fb1kd94z9IllRKqOrQIa6l',
+          'X-Parse-Master-Key': '7wHPVDC4MkHR7f6a3gUcYqu8rb8XfVt0GY0gkAs0', 
         }
       });
     const movieListParse = await movieList.json();
     if (movieListParse) {
       console.log("The movie list is --->",movieListParse.results);
-      setTotalMovies(prev => [...prev, movieListParse.results]);
+      setTotalMovies(prev => [...prev, ...movieListParse.results]);
       setPaginationCount(prev => prev + 14);
     }
   }
